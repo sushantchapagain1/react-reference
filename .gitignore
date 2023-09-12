@@ -1,7 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+01-pizza-menu/node_modules
+02-steps/node_modules
+03-travel-list/node_modules
+04-eat-split/node_modules
+05-use-popcorn/node_modules
+06-behind-the-scenes/node_modules
+07-classy-weather/node_modules
+08-react-quiz/node_modules
+
 /.pnp
 .pnp.js
 
