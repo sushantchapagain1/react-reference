@@ -9,6 +9,8 @@
 06-behind-the-scenes/node_modules
 07-classy-weather/node_modules
 08-react-quiz/node_modules
+09-world-wise/node_modules
+
 
 /.pnp
 .pnp.js
