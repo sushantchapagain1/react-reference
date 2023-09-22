@@ -25,16 +25,16 @@
       "id": 17806751
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Kakani-02",
+      "country": "Nepal",
+      "emoji": "🇳🇵",
+      "date": "2023-09-19T18:11:17.747Z",
+      "notes": "nice village",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": "27.78077164334822",
+        "lng": "85.2484130859375"
       },
-      "id": 98443197
+      "id": 73930386
     }
   ]
 }

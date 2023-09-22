@@ -1,6 +1,8 @@
 import React from "react";
+import { useQuestion } from "../context/QuestionContext";
 
-function Options({ question, selectedAnswer, dispatch }) {
+function Options({ question }) {
+  const { selectedAnswer, dispatch } = useQuestion();
   const hasAnswered = selectedAnswer !== null;
 
   return (

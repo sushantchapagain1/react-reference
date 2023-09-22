@@ -1,6 +1,9 @@
 import React from "react";
+import { useQuestion } from "../context/QuestionContext";
 
-function FinishScreen({ points, possiblePoints, highScore, dispatch }) {
+function FinishScreen() {
+  const { points, possiblePoints, highScore, dispatch } = useQuestion();
+
   const percentage = (points / possiblePoints) * 100;
   return (
     <>

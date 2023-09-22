@@ -1,14 +1,12 @@
 import React from "react";
+import { useQuestion } from "../context/QuestionContext";
 
 console.log();
 
-const ProgressBar = ({
-  numQuestion,
-  index,
-  points,
-  possiblePoints,
-  selectedAnswer,
-}) => {
+const ProgressBar = () => {
+  const { numQuestion, index, points, possiblePoints, selectedAnswer } =
+    useQuestion();
+
   return (
     <header className="progress">
       {/* if we add directly + 1 it imediatly shows the progress which is 
