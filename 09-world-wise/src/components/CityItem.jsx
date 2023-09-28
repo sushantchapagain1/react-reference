@@ -13,7 +13,7 @@ const formatDate = (date) =>
 function CityItem({ city }) {
   const { currentCity, deleteCity } = useCities();
   const { emoji, cityName, date, id, position } = city;
-  console.log(id, position);
+
   function handleDelete(e) {
     e.preventDefault();
     deleteCity(id);
