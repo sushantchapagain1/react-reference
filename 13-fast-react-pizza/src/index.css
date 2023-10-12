@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* just for showing acctualy use react component to reuse classes */
+@layer components {
+  .input {
+    @apply w-full rounded-full border border-stone-200 px-3 py-2 text-sm
+    focus:outline-none focus:ring focus:ring-yellow-500 md:px-4 md:py-3;
+  }
+}
+
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
 .loader {
   width: 45px;

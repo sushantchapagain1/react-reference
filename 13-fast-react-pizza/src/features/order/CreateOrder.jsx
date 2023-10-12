@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { useState } from 'react';
+import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 
-import { createOrder } from "../../services/apiRestaurant";
+import { createOrder } from '../../services/apiRestaurant';
+import Button from '../../ui/Button';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -12,21 +13,21 @@ const isValidPhone = (str) =>
 const fakeCart = [
   {
     pizzaId: 12,
-    name: "Mediterranean",
+    name: 'Mediterranean',
     quantity: 2,
     unitPrice: 16,
     totalPrice: 32,
   },
   {
     pizzaId: 6,
-    name: "Vegetale",
+    name: 'Vegetale',
     quantity: 1,
     unitPrice: 13,
     totalPrice: 13,
   },
   {
     pizzaId: 11,
-    name: "Spinach and Mushroom",
+    name: 'Spinach and Mushroom',
     quantity: 1,
     unitPrice: 15,
     totalPrice: 15,
@@ -35,7 +36,7 @@ const fakeCart = [
 
 function CreateOrder() {
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === 'submitting';
 
   const formErrors = useActionData();
 
@@ -51,13 +52,13 @@ function CreateOrder() {
 
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input type="text" name="customer" required className="input" />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input type="tel" name="phone" required className="input" />
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
@@ -65,7 +66,7 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input type="text" name="address" required className="input" />
           </div>
         </div>
 
@@ -74,6 +75,7 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
+            className="h-6 w-6 accent-yellow-500 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-offset-2"
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
@@ -81,9 +83,9 @@ function CreateOrder() {
         </div>
 
         <div>
-          <button disabled={isSubmitting}>
-            {isSubmitting ? "Placing Order..." : "Order now"}
-          </button>
+          <Button disabled={isSubmitting}>
+            {isSubmitting ? 'Placing Order...' : 'Order now'}
+          </Button>
         </div>
       </Form>
     </div>
@@ -96,14 +98,14 @@ export async function action({ request }) {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === "on",
+    priority: data.priority === 'on',
   };
 
   const errors = {};
 
   if (!isValidPhone(order.phone))
     errors.phone =
-      "Please enter a phone number we might need to connect to you later.";
+      'Please enter a phone number we might need to connect to you later.';
 
   if (Object.keys(errors).length > 0) return errors;
 
