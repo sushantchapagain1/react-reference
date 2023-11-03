@@ -8,6 +8,7 @@ import {
   formatCurrency,
   formatDate,
 } from '../../utils/helpers';
+import UpdateOrder from './UpdateOrder';
 
 function Order() {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
@@ -62,6 +63,7 @@ function Order() {
         <p className="font-bold text-stone-800">
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
+        {!priority && <UpdateOrder />}
       </div>
     </div>
   );
