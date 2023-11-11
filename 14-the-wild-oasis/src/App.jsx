@@ -1,27 +1,32 @@
-import GlobalStyle from './styles/GlobalStyle';
-import Heading from './ui/Heading';
-import Button from './ui/Button';
-import Row from './ui/Row';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
+import Dashboard from './pages/Dashboard';
+import Account from './pages/Account';
+import Bookings from './pages/Bookings';
+import Cabins from './pages/Cabins';
+import Login from './pages/Login';
+import PageNotFound from './pages/PageNotFound';
+import Settings from './pages/Dashboard';
+import Users from './pages/Users';
+import GlobalStyles from './styles/GlobalStyle';
 
 function App() {
   return (
     <>
-      {/* global style needs to be the sibling component it doesnot accept children */}
-      <GlobalStyle />
-      <Row>
-        <Heading as="h1">The Wild Oasis</Heading>
-        <Heading as="h2">The Wild Oasis</Heading>
-
-        <Row type="horizontal">
-          <div>
-            <Heading as="h3">Check In and Out </Heading>
-            <Button size="small">Check In</Button>
-            <Button variation="danger" size="small">
-              Check Out
-            </Button>
-          </div>
-        </Row>
-      </Row>
+      <GlobalStyles />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="bookings" element={<Bookings />} />
+          <Route path="account" element={<Account />} />
+          <Route path="cabins" element={<Cabins />} />
+          <Route path="login" element={<Login />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="users" element={<Users />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
