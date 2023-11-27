@@ -1,9 +1,7 @@
-import { createContext, useState, cloneElement, useContext } from 'react';
 import { createPortal } from 'react-dom';
 
 import { HiXMark } from 'react-icons/hi2';
 import styled from 'styled-components';
-import useOutsideClick from '../hooks/useOutsideClick';
 
 const StyledModal = styled.div`
   position: fixed;
@@ -54,53 +52,21 @@ const Button = styled.button`
   }
 `;
 
-const ModalContext = createContext();
-
 // React portal is feature that allows us to render element outside of dom Strcuture in Dom tree but Keeping the element same in
 // virtaul dom or fibeer tree or React Component tree so that we can allows props and it works normally.
 
-function Modal({ children }) {
-  const [openName, setOpenName] = useState('');
-
-  const close = () => {
-    setOpenName('');
-  };
-
-  return (
-    <ModalContext.Provider value={{ openName, setOpenName, close }}>
-      {children}
-    </ModalContext.Provider>
-  );
-}
-
-function Open({ opens: openWindowName, children }) {
-  const { setOpenName } = useContext(ModalContext);
-
-  // way to pass props to children sometimes we need it.
-  return cloneElement(children, { onClick: () => setOpenName(openWindowName) });
-}
-
-function Window({ name, children }) {
-  const { openName, close } = useContext(ModalContext);
-
-  const { ref } = useOutsideClick(close);
-
-  if (name !== openName) return null;
-
+function Modal({ onClose, children }) {
   return createPortal(
     <Overlay>
-      <StyledModal ref={ref}>
-        <Button onClick={close}>
+      <StyledModal>
+        <Button onClick={onClose}>
           <HiXMark />
         </Button>
-        <div>{cloneElement(children, { onCloseModal: close })}</div>
+        <div>{children}</div>
       </StyledModal>
     </Overlay>,
     document.body
   );
 }
-
-Modal.Open = Open;
-Modal.Window = Window;
 
 export default Modal;

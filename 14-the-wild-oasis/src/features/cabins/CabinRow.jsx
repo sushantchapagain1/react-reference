@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { formatCurrency } from '../../utils/helpers';
@@ -6,6 +6,8 @@ import CreateCabinForm from './CreateCabinForm';
 import useDeleteCabin from '../../hooks/cabins/useDeleteCabin';
 import { HiSquare2Stack, HiPencil, HiTrash } from 'react-icons/hi2';
 import useCreateCabin from '../../hooks/cabins/useCreateCabin';
+import Modal from '../../ui/Modal';
+import ConfirmDelete from '../../ui/ConfirmDelete';
 
 const TableRow = styled.div`
   display: grid;
@@ -47,8 +49,7 @@ const Discount = styled.div`
 `;
 
 function CabinRow({ cabin }) {
-  const [isEditFormOpen, setIsEditFormOpen] = useState();
-  const { isDeleting, mutate } = useDeleteCabin();
+  const { isDeleting, mutate: deleteCabin } = useDeleteCabin();
   const { isCreating, createCabin } = useCreateCabin();
 
   const {
@@ -86,15 +87,33 @@ function CabinRow({ cabin }) {
           <button onClick={handleDuplicateCabin} disabled={isCreating}>
             <HiSquare2Stack />
           </button>
-          <button onClick={() => setIsEditFormOpen((open) => !open)}>
-            <HiPencil />
-          </button>
-          <button onClick={() => mutate(cabinId)} disabled={isDeleting}>
-            <HiTrash />
-          </button>
+
+          <Modal>
+            <Modal.Open opens="edit-cabin-form">
+              <button>
+                <HiPencil />
+              </button>
+            </Modal.Open>
+            <Modal.Window name="edit-cabin-form">
+              <CreateCabinForm editCabinData={cabin} />
+            </Modal.Window>
+
+            <Modal.Open opens="delete-cabin-confirm">
+              <button>
+                <HiTrash />
+              </button>
+            </Modal.Open>
+            <Modal.Window name="delete-cabin-confirm">
+              <ConfirmDelete
+                resourceName="cabin"
+                disabled={isDeleting}
+                onConfirm={() => deleteCabin(cabinId)}
+              />
+            </Modal.Window>
+          </Modal>
         </div>
       </TableRow>
-      {isEditFormOpen && <CreateCabinForm editCabinData={cabin} />}
+      {/* {isEditFormOpen && <CreateCabinForm editCabinData={cabin} />} */}
     </>
   );
 }
