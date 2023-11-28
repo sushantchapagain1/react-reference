@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { formatCurrency } from '../../utils/helpers';
 import CreateCabinForm from './CreateCabinForm';
-import useDeleteCabin from '../../hooks/cabins/useDeleteCabin';
+import { useDeleteCabin } from '../../hooks/cabins/useDeleteCabin';
 import { HiSquare2Stack, HiPencil, HiTrash } from 'react-icons/hi2';
-import useCreateCabin from '../../hooks/cabins/useCreateCabin';
+import { useCreateCabin } from '../../hooks/cabins/useCreateCabin';
 import Modal from '../../ui/Modal';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import Menus from '../../ui/Menus';

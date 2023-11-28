@@ -7,8 +7,8 @@ import FileInput from '../../ui/FileInput';
 import Textarea from '../../ui/Textarea';
 
 import FormRow from '../../ui/FormRow';
-import useCreateCabin from '../../hooks/cabins/useCreateCabin';
-import useUpdateCabin from '../../hooks/cabins/useUpdateCabin';
+import { useCreateCabin } from '../../hooks/cabins/useCreateCabin';
+import { useUpdateCabin } from '../../hooks/cabins/useUpdateCabin';
 
 function CreateCabinForm({ editCabinData = {}, onCloseModal }) {
   const { id: editId, ...editValues } = editCabinData;

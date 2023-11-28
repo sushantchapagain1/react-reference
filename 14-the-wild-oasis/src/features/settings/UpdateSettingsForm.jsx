@@ -1,5 +1,5 @@
-import useSettings from '../../hooks/settings/useSetting';
-import useUpdateSettings from '../../hooks/settings/useUpdateSetting';
+import { useSettings } from '../../hooks/settings/useSetting';
+import { useUpdateSettings } from '../../hooks/settings/useUpdateSetting';
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';

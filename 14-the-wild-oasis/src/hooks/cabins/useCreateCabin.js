@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 import { createEditCabin } from '../../services/apiCabins';
 
-function useCreateCabin() {
+export function useCreateCabin() {
   const queryClient = useQueryClient();
 
   const { mutate: createCabin, isLoading: isCreating } = useMutation({
@@ -21,5 +21,3 @@ function useCreateCabin() {
   });
   return { createCabin, isCreating };
 }
-
-export default useCreateCabin;

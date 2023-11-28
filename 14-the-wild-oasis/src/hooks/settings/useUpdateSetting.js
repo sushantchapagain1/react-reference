@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 import { updateSetting as updateSettingApi } from '../../services/apiSettings';
 
-function useUpdateSettings() {
+export function useUpdateSettings() {
   const queryClient = useQueryClient();
 
   const { mutate: updateSetting, isLoading: isEditing } = useMutation({
@@ -23,5 +23,3 @@ function useUpdateSettings() {
 
   return { updateSetting, isEditing };
 }
-
-export default useUpdateSettings;
