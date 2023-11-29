@@ -10,8 +10,11 @@ import Empty from '../../ui/Empty';
 
 function CabinTable() {
   const { cabins, isLoading } = useCabins();
-
   const [searchParams] = useSearchParams();
+
+  if (isLoading) return <Spinner />;
+
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   // Filtering
   const filteredValue = searchParams.get('discount') || 'all';
@@ -36,10 +39,6 @@ function CabinTable() {
   const sortedCabins = filteredCabins?.sort(
     (a, b) => (a[field] - b[field]) * modifier
   );
-
-  if (!cabins.length) return <Empty resourceName="cabins" />;
-
-  if (isLoading) return <Spinner />;
 
   return (
     <Menus>

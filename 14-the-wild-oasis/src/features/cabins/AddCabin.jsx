@@ -3,6 +3,7 @@ import Button from '../../ui/Button';
 import CreateCabinForm from '../../features/cabins/CreateCabinForm';
 import Modal from '../../ui/Modal';
 
+// Old Not so proper wayto do.
 // function AddCabin() {
 //   const [isOpen, setIsOpenModal] = useState(false);
 

@@ -47,11 +47,11 @@ export const guests = [
 
   // GPT
   {
-    fullName: 'Emma Watson',
-    email: 'emma@gmail.com',
-    nationality: 'United Kingdom',
+    fullName: 'Sushant Chapagain',
+    email: 'sushantchapagain@gmail.com',
+    nationality: 'Nepalese',
     nationalID: '1234578901',
-    countryFlag: 'https://flagcdn.com/gb.svg',
+    countryFlag: 'https://flagcdn.com/np.svg',
   },
   {
     fullName: 'Mohammed Ali',

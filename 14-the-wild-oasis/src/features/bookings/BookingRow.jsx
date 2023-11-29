@@ -34,20 +34,20 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
+function BookingRow({ booking }) {
+  const {
     id: bookingId,
     created_at,
     startDate,
     endDate,
     numNights,
     numGuests,
-    totalPrice,
     status,
-    guests: { fullName: guestName, email },
+    totalPrice,
     cabins: { name: cabinName },
-  },
-}) {
+    guests: { fullName: guestName, email },
+  } = booking || {};
+
   const statusToTagName = {
     unconfirmed: 'blue',
     'checked-in': 'green',
