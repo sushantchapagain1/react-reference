@@ -1,13 +1,21 @@
 import { getToday } from '../utils/helpers';
 import supabase from './supabase';
 
-export async function getBookings() {
-  const { data, error } = await supabase
+export async function getBookings({ filter, sortBy }) {
+  let query = supabase
     .from('bookings')
     //get or populate data from relationship table.
     .select(
       'id,created_at,startDate,endDate,numNights,numGuests,status,totalPrice,cabins(name),guests(fullName,email)'
     );
+
+  if (filter) query[filter.method || 'eq'](filter.field, filter.value);
+
+  if (sortBy)
+    query.order(sortBy.field, { ascending: sortBy.direction === 'asc' });
+
+  const { data, error } = await query;
+
   if (error) {
     console.error(error);
     throw new Error('Bookings could not be loaded');
