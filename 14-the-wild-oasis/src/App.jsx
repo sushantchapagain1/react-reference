@@ -13,6 +13,8 @@ import Settings from './pages/Settings';
 import Users from './pages/Users';
 import GlobalStyles from './styles/GlobalStyle';
 import AppLayout from './ui/AppLayout';
+import Booking from './pages/Booking';
+import CheckIn from './pages/CheckIn';
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60 * 1000 } },
@@ -45,6 +47,8 @@ function App() {
             <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
+            <Route path="bookings/:bookingId" element={<Booking />} />
+            <Route path="check-in/:bookingId" element={<CheckIn />} />
             <Route path="account" element={<Account />} />
             <Route path="cabins" element={<Cabins />} />
             <Route path="settings" element={<Settings />} />
