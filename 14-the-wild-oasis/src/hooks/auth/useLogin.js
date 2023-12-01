@@ -10,9 +10,13 @@ export function useLogin() {
   const { mutate: login, isLoading: isLoggingIn } = useMutation({
     mutationKey: ['login'],
     mutationFn: loginApi,
-    onSuccess: (user) => {
-      queryClient.setQueriesData(['user', user]);
-      navigate('/');
+    onSuccess: (data) => {
+      // just like prefetching but instead of going in useUser and get
+      // data for component the data is sent to cahche by RQ and getting
+      // the user from cachhe instaead of going to useUser hence making
+      // it little more fast (done for optimization)
+      queryClient.setQueryData(['user', data.user]);
+      navigate('/', { replace: true });
     },
     onError: (err) => toast.error(err.message),
   });
