@@ -5,16 +5,19 @@ export function useOutsideClick(handler, listenCapturing = true) {
 
   useEffect(
     function () {
-      function handleOutsideClick(e) {
-        if (ref.current && !ref.current.contains(e.target)) handler();
+      function handleClick(e) {
+        if (ref.current && !ref.current.contains(e.target)) {
+          handler();
+        }
       }
 
-      // revent moves while capturing phase not bubbling phase if passed true.
-      document.addEventListener('click', handleOutsideClick, listenCapturing);
+      document.addEventListener('click', handleClick, listenCapturing);
 
-      return () => document.removeEventListener('click', handleOutsideClick);
+      return () =>
+        document.removeEventListener('click', handleClick, listenCapturing);
     },
     [handler, listenCapturing]
   );
-  return { ref };
+
+  return ref;
 }
