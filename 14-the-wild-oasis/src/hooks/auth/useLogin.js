@@ -16,7 +16,7 @@ export function useLogin() {
       // the user from cachhe instaead of going to useUser hence making
       // it little more fast (done for optimization)
       queryClient.setQueryData(['user', data.user]);
-      navigate('/', { replace: true });
+      navigate('/dashboard', { replace: true });
     },
     onError: (err) => toast.error(err.message),
   });
