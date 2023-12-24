@@ -87,11 +87,11 @@ function Toggle({ id }) {
 
   function handleClick(e) {
     e.stopPropagation();
-    // get position near it.
+
     const rect = e.target.closest('button').getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
-      y: rect.y + rect.height + 3,
+      y: rect.y + rect.height + 8,
     });
 
     openId === '' || openId !== id ? setIsOpenId(id) : close();

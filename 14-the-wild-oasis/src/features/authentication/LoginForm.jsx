@@ -9,7 +9,7 @@ import { useLogin } from '../../hooks/auth/useLogin';
 
 function LoginForm() {
   const [email, setEmail] = useState('test@test.com');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('12345678');
   const { isLoggingIn, login } = useLogin();
 
   function handleSubmit(e) {

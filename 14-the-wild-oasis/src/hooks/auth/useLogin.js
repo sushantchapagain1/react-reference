@@ -15,7 +15,7 @@ export function useLogin() {
       // data for component the data is sent to cahche by RQ and getting
       // the user from cachhe instaead of going to useUser hence making
       // it little more fast (done for optimization)
-      queryClient.setQueryData(['user', data.user]);
+      queryClient.setQueryData(['user'], data.user);
       navigate('/dashboard', { replace: true });
     },
     onError: (err) => toast.error(err.message),
